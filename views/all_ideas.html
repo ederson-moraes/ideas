@@ -1,13 +1,17 @@
-{%  for idea in ideas %}
-            <div class="idea">
-                <img src="{{idea.img}}" alt= "Imagem de {{idea.title}}">
-                <div class="content">
-                    <h3>{{idea.title}}</h3>
-                    <p>{{idea.category}}</p>
-                    <div class="description">
-                        {{idea.description}}
-                    </div>
-                    <a href="{{idea.url}}" target="_blank">Go to</a>
-                </div>
+{% for idea in ideas %}
+    <div class="idea">
+        <img src="{{idea.image}}" alt="Imagem de {{idea.title}}">
+        <div class="content">
+            <h3>{{idea.title}}</h3>
+            <p>{{idea.category}}</p>
+            <div class="description">
+                {{idea.description}}
             </div>
-            {% endfor %}
+            <a href="{{idea.link}}" target="_blank">Go to</a>
+            <form action="/delete" method="POST" style="display: inline;">
+                <input type="hidden" name="id" value="{{idea.id}}">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+    </div>
+{% endfor %}
